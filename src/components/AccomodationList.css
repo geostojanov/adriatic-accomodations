@@ -1,0 +1,91 @@
+.accomodation-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 30px;
+  max-width: 1200px;
+  margin: 30px auto;
+}
+
+.accomodation-list .acard {
+  background: #f4f4f4;
+  color: #333;
+  padding: 25px;
+  border-radius: 6px;
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.05);
+  position: relative;
+  transition: all 0.2s ease;
+  cursor: pointer
+}
+
+.accomodation-list .acard div {
+  color: #555;
+  font-size: 0.9em;
+  margin: 20px 0;
+  line-height: 1.5em;
+}
+
+.accomodation-list .acard:hover {
+  transform: scale(1.01);
+}
+
+.accomodation-list .acard h3 {
+  color: #555;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.accomodation-list .acard img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 10px auto;
+  border-radius: 6px;
+}
+
+.accomodation-list a.acard {
+  text-decoration: none;
+}
+
+.accomodation-list .price-message {
+  margin: 10px 0;
+  font-size: 0.8em;
+  color: #6e6e6e; 
+}
+
+@media (max-width: 768px) {
+  .accomodation-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+  }
+
+  .accomodation-list .acard {
+    padding: 20px;
+  }
+
+  .accomodation-list .acard div {
+    font-size: 0.8em;
+  }
+
+  .accomodation-list .acard h3 {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .accomodation-list {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+
+  .accomodation-list .acard {
+    padding: 15px;
+  }
+
+  .accomodation-list .acard div {
+    font-size: 0.7em;
+  }
+
+  .accomodation-list .acard h3 {
+    font-size: 1em;
+  }
+}

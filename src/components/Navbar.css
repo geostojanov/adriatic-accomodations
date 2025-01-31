@@ -1,0 +1,16 @@
+.navbar {
+  padding: 20px;
+  background: #248a9c;
+  color: #eee;
+}
+.navbar nav {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.navbar a.brand {
+  text-decoration: none;
+  margin-right: auto;
+  color: #eee;
+}
