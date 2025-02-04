@@ -1,4 +1,4 @@
-export const calculateTotalPrice = (pricelist, startDate, endDate) => {
+const calculateTotalPrice = (pricelist, startDate, endDate) => {
   if (!pricelist || !startDate || !endDate) return "N/A";
   const start = new Date(startDate);
   const end = new Date(endDate);
@@ -22,3 +22,25 @@ export const calculateTotalPrice = (pricelist, startDate, endDate) => {
 
   return Math.round(totalPrice);
 };
+
+const isDateAvailable = (startDate, endDate, availableDates) => {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  if (start > end) {
+    return false;
+  }
+  return availableDates.some((interval) => {
+    const intervalStart = new Date(interval.intervalStart);
+    const intervalEnd = new Date(interval.intervalEnd);
+    return start >= intervalStart && end < intervalEnd;
+  });
+};
+
+const isPriceInRange = (startDate, endDate, pricelist, maxPrice) => {
+  const totalPrice = calculateTotalPrice(pricelist, startDate, endDate);
+  return totalPrice <= maxPrice;
+};
+
+
+
+export { isPriceInRange, isDateAvailable };

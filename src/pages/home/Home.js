@@ -1,6 +1,6 @@
 import { useFetch } from "../../hooks/useFetch";
 import { useFilters } from "../../hooks/useFilters";
-import { calculateTotalPrice } from "../../utils/utils";
+import { isPriceInRange, isDateAvailable } from "../../utils/utils";
 
 // styles
 import "./Home.css";
@@ -16,29 +16,11 @@ export default function Home() {
 
   const { filters } = useFilters();
   const [filteredData, setFilteredData] = useState([]);
-
-  const isDateAvailable = (startDate, endDate, availableDates) => {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    if (start > end) {
-      return false;
-    }
-    return availableDates.some((interval) => {
-      const intervalStart = new Date(interval.intervalStart);
-      const intervalEnd = new Date(interval.intervalEnd);
-      return start >= intervalStart && end < intervalEnd;
-    });
-  };
-
-  const isPriceInRange = (startDate, endDate, pricelist, maxPrice) => {
-    const totalPrice = calculateTotalPrice(pricelist, startDate, endDate);
-    return totalPrice <= maxPrice;
-  };
-
+  
   const applyFilters = useCallback(() => {
     if (filters.applied && data) {
       let filtered = data;
-
+  
       if (filters.capacity) {
         filtered = filtered.filter(
           (accomodation) => accomodation.capacity >= filters.capacity
